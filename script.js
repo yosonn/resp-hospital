@@ -111,4 +111,16 @@ function initCharts() {
 // 輔助函式：生成隨機整數陣列
 function generateRandomData(count, min, max) {
     return Array.from({length: count}, () => Math.floor(Math.random() * (max - min + 1)) + min);
+
 }
+// Sidebar Toggle for Mobile
+document.addEventListener("DOMContentLoaded", () => {
+    const menuBtn = document.querySelector(".menu-toggle");
+    const sidebar = document.querySelector(".sidebar");
+
+    if (menuBtn && sidebar) {
+        menuBtn.addEventListener("click", () => {
+            sidebar.classList.toggle("open");
+        });
+    }
+});
