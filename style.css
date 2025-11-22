@@ -360,6 +360,46 @@ body {
 
 /* ==== 修復 Chart.js 無限撐開高度的 bug ==== */
 .chart-card canvas {
+
+    /* ----- Mobile Sidebar Toggle ----- */
+
+.menu-toggle {
+    background: none;
+    border: none;
+    font-size: 1.6rem;
+    margin-right: 15px;
+    cursor: pointer;
+    display: none;
+}
+
+/* 手機上顯示漢堡按鈕 */
+@media(max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    /* sidebar 預設隱藏到左邊 */
+    .sidebar {
+        position: fixed;
+        left: -260px;
+        top: 0;
+        height: 100%;
+        z-index: 1000;
+        transition: left 0.3s ease;
+    }
+
+    /* 開啟狀態 */
+    .sidebar.open {
+        left: 0;
+    }
+
+    /* 主內容改為全寬 */
+    .main-content {
+        padding: 20px;
+    }
+}
+
     height: 250px !important;   /* 固定圖表高度 */
     max-height: 250px;
 }
+
