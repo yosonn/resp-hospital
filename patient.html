@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>病患詳細儀表板 - 吳宥辰</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar collapsed">
+            <div class="logo-area small">
+                <i class="fa-solid fa-heart-pulse"></i>
+            </div>
+            <a href="index.html" class="back-btn" title="回列表">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+        </aside>
+
+        <main class="main-content full-width">
+            <div class="patient-header card">
+                <div class="ph-left">
+                    <div class="avatar">吳</div>
+                    <div class="ph-info">
+                        <h1>吳宥辰 <span class="badge badge-red">危險</span></h1>
+                        <p>20 歲 / 男 / 病房 5A-12</p>
+                    </div>
+                </div>
+                <div class="ph-right">
+                    <div class="detail-item">
+                        <span class="label">診斷</span>
+                        <span class="value">COPD Stage II, Pneumonia</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">使用設備</span>
+                        <span class="value">Ventilator (PB840), SpO₂ Monitor</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="vitals-grid">
+                <div class="card vital-card danger">
+                    <div class="v-title">SpO₂ (血氧)</div>
+                    <div class="v-value">88<span class="unit">%</span></div>
+                    <div class="v-status">過低 (Low)</div>
+                </div>
+                <div class="card vital-card">
+                    <div class="v-title">HR (心率)</div>
+                    <div class="v-value">92<span class="unit">bpm</span></div>
+                    <div class="v-status normal">正常</div>
+                </div>
+                <div class="card vital-card warning">
+                    <div class="v-title">RR (呼吸率)</div>
+                    <div class="v-value">26<span class="unit">bpm</span></div>
+                    <div class="v-status">略快</div>
+                </div>
+                <div class="card vital-card">
+                    <div class="v-title">FiO₂</div>
+                    <div class="v-value">40<span class="unit">%</span></div>
+                    <div class="v-status normal">設定值</div>
+                </div>
+                <div class="card vital-card">
+                    <div class="v-title">Vt (潮氣量)</div>
+                    <div class="v-value">450<span class="unit">ml</span></div>
+                    <div class="v-status normal">正常</div>
+                </div>
+                <div class="card vital-card">
+                    <div class="v-title">PEEP</div>
+                    <div class="v-value">5.0<span class="unit">cmH2O</span></div>
+                    <div class="v-status normal">正常</div>
+                </div>
+                <div class="card vital-card">
+                    <div class="v-title">EtCO₂</div>
+                    <div class="v-value">38<span class="unit">mmHg</span></div>
+                    <div class="v-status normal">正常</div>
+                </div>
+            </div>
+
+            <div class="charts-grid">
+                <div class="card chart-card">
+                    <h3><i class="fa-solid fa-heart-pulse"></i> 心率趨勢 (HR Trend)</h3>
+                    <canvas id="hrChart"></canvas>
+                </div>
+                <div class="card chart-card">
+                    <h3><i class="fa-solid fa-lungs"></i> 血氧趨勢 (SpO₂ Trend)</h3>
+                    <canvas id="spo2Chart"></canvas>
+                </div>
+                <div class="card chart-card">
+                    <h3><i class="fa-solid fa-wind"></i> 呼吸率趨勢 (RR Trend)</h3>
+                    <canvas id="rrChart"></canvas>
+                </div>
+            </div>
+
+            <div class="details-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>詳細參數紀錄 (Details)</h3>
+                    </div>
+                    <table class="styled-table small-table">
+                        <thead>
+                            <tr>
+                                <th>參數</th>
+                                <th>當前數值</th>
+                                <th>目標範圍</th>
+                                <th>趨勢</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>FVC (用力肺活量)</td>
+                                <td>3.2 L</td>
+                                <td>> 3.5 L</td>
+                                <td><span class="text-yellow">↓ 下降</span></td>
+                            </tr>
+                            <tr>
+                                <td>FEV1</td>
+                                <td>2.1 L</td>
+                                <td>> 2.5 L</td>
+                                <td><span class="text-yellow">↔ 持平</span></td>
+                            </tr>
+                            <tr>
+                                <td>EtCO₂</td>
+                                <td>38 mmHg</td>
+                                <td>35-45 mmHg</td>
+                                <td><span class="text-green">↔ 穩定</span></td>
+                            </tr>
+                            <tr>
+                                <td>PIP (吸氣峰壓)</td>
+                                <td>22 cmH2O</td>
+                                <td>< 30 cmH2O</td>
+                                <td><span class="text-green">↔ 穩定</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>近 24 小時警示事件</h3>
+                        <button class="btn-outline">匯出報告</button>
+                    </div>
+                    <ul class="event-list">
+                        <li class="event-item danger">
+                            <span class="time">10:42</span>
+                            <div class="msg"><strong>SpO₂ Critical</strong> - 數值降至 88% (持續 2 min)</div>
+                        </li>
+                        <li class="event-item warning">
+                            <span class="time">08:30</span>
+                            <div class="msg"><strong>High RR</strong> - 呼吸頻率 > 25 bpm</div>
+                        </li>
+                        <li class="event-item info">
+                            <span class="time">07:00</span>
+                            <div class="msg"><strong>Routine Check</strong> - 早班護理師巡房，調整 PEEP</div>
+                        </li>
+                        <li class="event-item warning">
+                            <span class="time">昨日 23:15</span>
+                            <div class="msg"><strong>Ventilator Alert</strong> - High Pressure Alarm</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

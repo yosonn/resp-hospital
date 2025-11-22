@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>醫院呼吸治療監測系統 - 病患清單</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo-area">
+                <i class="fa-solid fa-heart-pulse"></i> 
+                <h2>RespMonitor</h2>
+            </div>
+            <div class="nav-title">病房列表 (ICU/RCW)</div>
+            <ul class="patient-list">
+                <li onclick="window.location.href='patient.html'">
+                    <div class="p-info">
+                        <span class="p-name">吳宥辰</span>
+                        <span class="p-ward">5A-12</span>
+                    </div>
+                    <span class="status-dot status-red"></span>
+                </li>
+                <li onclick="window.location.href='patient.html'">
+                    <div class="p-info">
+                        <span class="p-name">林小美</span>
+                        <span class="p-ward">5A-13</span>
+                    </div>
+                    <span class="status-dot status-green"></span>
+                </li>
+                <li onclick="window.location.href='patient.html'">
+                    <div class="p-info">
+                        <span class="p-name">陳大明</span>
+                        <span class="p-ward">5B-01</span>
+                    </div>
+                    <span class="status-dot status-yellow"></span>
+                </li>
+                <li onclick="window.location.href='patient.html'">
+                    <div class="p-info">
+                        <span class="p-name">張志豪</span>
+                        <span class="p-ward">5B-02</span>
+                    </div>
+                    <span class="status-dot status-green"></span>
+                </li>
+                <li onclick="window.location.href='patient.html'">
+                    <div class="p-info">
+                        <span class="p-name">劉恩希</span>
+                        <span class="p-ward">5C-08</span>
+                    </div>
+                    <span class="status-dot status-green"></span>
+                </li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-bar">
+                <h1>Hospital Respiratory Monitoring System</h1>
+                <div class="user-profile">
+                    <span>Dr. Yang (R.T.)</span>
+                    <i class="fa-solid fa-user-doctor"></i>
+                </div>
+            </header>
+
+            <div class="stats-grid">
+                <div class="card stat-card">
+                    <div class="stat-icon bg-green"><i class="fa-solid fa-check"></i></div>
+                    <div class="stat-info">
+                        <h3>正常患者</h3>
+                        <p>18 人</p>
+                    </div>
+                </div>
+                <div class="card stat-card">
+                    <div class="stat-icon bg-yellow"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                    <div class="stat-info">
+                        <h3>需注意</h3>
+                        <p>5 人</p>
+                    </div>
+                </div>
+                <div class="card stat-card">
+                    <div class="stat-icon bg-red"><i class="fa-solid fa-bed-pulse"></i></div>
+                    <div class="stat-info">
+                        <h3>危險 / 緊急</h3>
+                        <p>2 人</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card table-card">
+                <div class="card-header">
+                    <h3>最近異常事件監測</h3>
+                </div>
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>時間</th>
+                            <th>病患姓名</th>
+                            <th>病房</th>
+                            <th>事件類型</th>
+                            <th>數值</th>
+                            <th>狀態</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>10:42 AM</td>
+                            <td>吳宥辰</td>
+                            <td>5A-12</td>
+                            <td>SpO₂ 過低</td>
+                            <td class="text-red">88%</td>
+                            <td><span class="badge badge-red">未處理</span></td>
+                        </tr>
+                        <tr>
+                            <td>10:15 AM</td>
+                            <td>陳大明</td>
+                            <td>5B-01</td>
+                            <td>RR 呼吸急促</td>
+                            <td class="text-yellow">28 bpm</td>
+                            <td><span class="badge badge-yellow">觀察中</span></td>
+                        </tr>
+                        <tr>
+                            <td>09:50 AM</td>
+                            <td>黃阿姨</td>
+                            <td>6C-05</td>
+                            <td>HR 心率過高</td>
+                            <td class="text-yellow">115 bpm</td>
+                            <td><span class="badge badge-green">已解決</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
