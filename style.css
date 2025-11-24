@@ -11,9 +11,9 @@
     --status-green: #28a745;
     --status-yellow: #ffc107;
     --status-red: #dc3545;
-    --status-blue: #17a2b8; /* 新增：使用中/資訊 */
-    --status-gray: #6c757d; /* 新增：已歸還/維修 */
-    --ai-purple: #6f42c1;   /* 新增：AI 專用色 */
+    --status-blue: #17a2b8;
+    --status-gray: #6c757d;
+    --ai-purple: #6f42c1;
     
     --shadow: 0 4px 6px rgba(0,0,0,0.05);
     --radius: 12px;
@@ -35,6 +35,7 @@ body {
 .container {
     display: flex;
     min-height: 100vh;
+    width: 100%;
 }
 
 /* Sidebar */
@@ -45,6 +46,7 @@ body {
     display: flex;
     flex-direction: column;
     padding: 20px 0;
+    flex-shrink: 0; /* 防止側欄被壓縮 */
     transition: width 0.3s;
 }
 
@@ -61,7 +63,8 @@ body {
     align-items: center;
     gap: 10px;
     font-weight: bold;
-    cursor: pointer; /* 可點擊回首頁 */
+    cursor: pointer;
+    text-decoration: none;
 }
 
 .logo-area.small {
@@ -82,20 +85,24 @@ body {
 .sidebar-menu {
     list-style: none;
     width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 .sidebar-menu li {
     width: 100%;
 }
 
+/* 一般選單連結樣式 */
 .sidebar-menu a {
     display: flex;
     align-items: center;
     padding: 15px 20px;
-    text-decoration: none;
-    color: var(--text-main);
+    text-decoration: none; /* 去除底線 */
+    color: var(--text-main); /* 確保顏色正確 */
     transition: background 0.2s;
     font-weight: 500;
+    width: 100%;
 }
 
 .sidebar-menu a:hover, .sidebar-menu a.active {
@@ -116,13 +123,30 @@ body {
     margin-right: 0;
 }
 
-/* Patient List specific style in sidebar */
-.patient-list-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+/* --- [修正重點] 病患列表樣式 --- */
+/* 讓病患列表的 a 標籤也能像原本的 li 一樣排版 */
+.patient-list a {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
     width: 100%;
+    text-decoration: none;
+    color: inherit;
 }
+
+.patient-list-item {
+    padding: 0; /* padding 改由內部的 a 標籤控制，或是保持 li padding 但 a 填滿 */
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.patient-list-item a {
+    padding: 15px 20px; /* 恢復原本的內距 */
+}
+
+.patient-list-item:hover {
+    background-color: var(--light-blue);
+}
+
 .sidebar.collapsed .p-info { display: none; }
 
 .p-info {
@@ -133,6 +157,7 @@ body {
 .p-name {
     font-weight: 600;
     font-size: 1rem;
+    color: var(--text-main);
 }
 
 .p-ward {
@@ -144,6 +169,7 @@ body {
     width: 12px;
     height: 12px;
     border-radius: 50%;
+    flex-shrink: 0;
 }
 
 .status-green { background-color: var(--status-green); }
@@ -156,6 +182,7 @@ body {
     padding: 30px;
     overflow-y: auto;
     height: 100vh;
+    background-color: var(--bg-color);
 }
 
 /* Top Header */
@@ -201,7 +228,7 @@ body {
     padding-bottom: 10px;
 }
 
-/* --- AI Card Style (New) --- */
+/* AI Card */
 .ai-card {
     border-left: 5px solid var(--ai-purple);
     background: linear-gradient(to right, #fdfbff, #ffffff);
@@ -298,8 +325,8 @@ body {
 .badge-red { background: #ffebee; color: var(--status-red); }
 .badge-yellow { background: #fff8e1; color: #ffa000; }
 .badge-green { background: #e8f5e9; color: var(--status-green); }
-.badge-blue { background: #e0f7fa; color: var(--status-blue); } /* New */
-.badge-gray { background: #e9ecef; color: var(--status-gray); } /* New */
+.badge-blue { background: #e0f7fa; color: var(--status-blue); }
+.badge-gray { background: #e9ecef; color: var(--status-gray); }
 
 .text-red { color: var(--status-red); font-weight: bold; }
 .text-yellow { color: #f57c00; font-weight: bold; }
@@ -352,7 +379,6 @@ body {
     gap: 20px;
     margin-bottom: 20px;
 }
-/* Fix Chart.js resizing bug */
 .chart-container {
     position: relative;
     height: 250px;
@@ -387,7 +413,6 @@ body {
 }
 .btn-outline:hover { background: var(--primary-blue); color: #fff; }
 
-/* Search Bar (Rental Page) */
 .search-bar {
     display: flex;
     gap: 10px;
@@ -409,7 +434,6 @@ body {
     cursor: pointer;
 }
 
-/* BI Insights Box */
 .insight-box {
     background-color: #f8f9fa;
     padding: 15px;
