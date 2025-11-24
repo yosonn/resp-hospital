@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BI 醫療決策分析 - RespMonitor</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo-area" onclick="window.location.href='index.html'">
+                <i class="fa-solid fa-heart-pulse"></i> 
+                <h2>RespMonitor</h2>
+            </div>
+            
+            <div class="nav-title">功能選單</div>
+            <ul class="sidebar-menu">
+                <li><a href="index.html"><i class="fa-solid fa-bed-pulse"></i> <span>病患監測列表</span></a></li>
+                <li><a href="rental.html"><i class="fa-solid fa-stopwatch"></i> <span>設備租借管理</span></a></li>
+                <li><a href="bi.html" class="active"><i class="fa-solid fa-chart-line"></i> <span>BI 決策分析</span></a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-bar">
+                <h1>Medical BI Dashboard</h1>
+                <div class="user-profile">
+                    <span>Dr. Yang (R.T.)</span>
+                    <i class="fa-solid fa-user-doctor"></i>
+                </div>
+            </header>
+
+            <!-- 1. 全院風險趨勢 -->
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fa-solid fa-chart-area"></i> 12小時 SpO₂ 高風險病患數趨勢</h3>
+                </div>
+                <div class="chart-container" style="height: 300px;">
+                    <canvas id="riskTrendChart"></canvas>
+                </div>
+                <div class="insight-box">
+                    <i class="fa-solid fa-lightbulb"></i> <strong>分析洞察：</strong> 凌晨 04:00 - 06:00 為風險高峰期，建議夜班護理人力在此時段加強巡房頻率。
+                </div>
+            </div>
+
+            <div class="charts-grid">
+                <!-- 2. 病房綜合指標雷達圖 -->
+                <div class="card chart-card">
+                    <h3><i class="fa-solid fa-bullseye"></i> 病房綜合風險評估 (Ward Comparison)</h3>
+                    <div class="chart-container">
+                        <canvas id="wardRadarChart"></canvas>
+                    </div>
+                    <div class="insight-box" style="font-size: 0.8rem;">
+                        5A ICU 在設備使用率與護理負荷上顯著高於平均。
+                    </div>
+                </div>
+
+                <!-- 3. RR vs EtCO2 關聯性 -->
+                <div class="card chart-card">
+                    <h3><i class="fa-solid fa-braille"></i> 呼吸率 (RR) 與 EtCO₂ 關聯分析</h3>
+                    <div class="chart-container">
+                        <canvas id="scatterChart"></canvas>
+                    </div>
+                    <div class="insight-box" style="font-size: 0.8rem;">
+                        分佈顯示高 RR 病患普遍伴隨偏低的 EtCO₂，可能為過度換氣現象。
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
