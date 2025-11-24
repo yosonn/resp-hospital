@@ -11,32 +11,18 @@
 <body>
     <div class="container">
         <aside class="sidebar collapsed">
-            <div class="logo-area small">
+            <div class="logo-area small" onclick="window.location.href='index.html'">
                 <i class="fa-solid fa-heart-pulse"></i>
             </div>
-            <a href="index.html" class="back-btn" title="回列表">
-                <i class="fa-solid fa-arrow-left"></i>
-            </a>
+            
+            <ul class="sidebar-menu" style="margin-top: 20px;">
+                <li><a href="index.html" title="病患列表"><i class="fa-solid fa-arrow-left"></i></a></li>
+                <li><a href="rental.html" title="租借管理"><i class="fa-solid fa-stopwatch"></i></a></li>
+                <li><a href="bi.html" title="BI 分析"><i class="fa-solid fa-chart-line"></i></a></li>
+            </ul>
         </aside>
 
         <main class="main-content full-width">
-            <header class="top-bar">
-                <div style="display:flex;align-items:center;gap:10px;">
-                    <button class="menu-toggle"><i class="fa-solid fa-bars"></i></button>
-                    <h1>病患詳細儀表板</h1>
-                </div>
-                <div class="user-profile">
-                    <span>Dr. Yang (R.T.)</span>
-                    <i class="fa-solid fa-user-doctor"></i>
-                </div>
-            </header>
-
-            <nav class="top-nav">
-                <a href="index.html" class="nav-link">病患清單</a>
-                <a href="rentals.html" class="nav-link">共享設備租借</a>
-                <a href="analytics.html" class="nav-link">商業智慧分析</a>
-            </nav>
-
             <div class="patient-header card">
                 <div class="ph-left">
                     <div class="avatar">吳</div>
@@ -95,18 +81,34 @@
                 </div>
             </div>
 
+            <!-- 新增：AI 建議區塊 -->
+            <div class="card ai-card">
+                <div class="ai-header">
+                    <i class="fa-solid fa-robot"></i> AI 臨床決策輔助 (Beta)
+                </div>
+                <div id="aiContent" class="ai-content">
+                    正在分析病患數據...
+                </div>
+            </div>
+
             <div class="charts-grid">
                 <div class="card chart-card">
                     <h3><i class="fa-solid fa-heart-pulse"></i> 心率趨勢 (HR Trend)</h3>
-                    <canvas id="hrChart"></canvas>
+                    <div class="chart-container">
+                        <canvas id="hrChart"></canvas>
+                    </div>
                 </div>
                 <div class="card chart-card">
                     <h3><i class="fa-solid fa-lungs"></i> 血氧趨勢 (SpO₂ Trend)</h3>
-                    <canvas id="spo2Chart"></canvas>
+                    <div class="chart-container">
+                        <canvas id="spo2Chart"></canvas>
+                    </div>
                 </div>
                 <div class="card chart-card">
                     <h3><i class="fa-solid fa-wind"></i> 呼吸率趨勢 (RR Trend)</h3>
-                    <canvas id="rrChart"></canvas>
+                    <div class="chart-container">
+                        <canvas id="rrChart"></canvas>
+                    </div>
                 </div>
             </div>
 
@@ -177,29 +179,6 @@
                         </li>
                     </ul>
                 </div>
-            </div>
-
-            <div class="card ai-card">
-                <div class="card-header">
-                    <h3>AI 建議與臨床提醒（模擬）</h3>
-                </div>
-                <p>
-                    根據目前病患的血氧、呼吸率與呼吸器設定，系統初步推估：
-                </p>
-                <ul style="margin-top:10px;padding-left:18px;font-size:0.9rem;color:#555;line-height:1.6;">
-                    <li>血氧 SpO₂ 長時間低於 90％，建議優先檢查呼吸器面罩密合度、氣道分泌物與體位是否影響換氣。</li>
-                    <li>呼吸率略快（RR 約 26 bpm），建議評估疼痛、焦慮或發燒等可能誘因，必要時調整鎮定與鎮痛策略。</li>
-                    <li>目前 EtCO₂ 與 PIP 數值穩定，短時間內無明顯換氣衰竭跡象，但建議持續監測肺功能變化。</li>
-                    <li>若 SpO₂ 再次跌至 88％以下且持續超過 5 分鐘，系統將自動升級警示等級並推播給值班醫師與呼吸治療師。</li>
-                </ul>
-                <div class="ai-chip-list">
-                    <span class="ai-chip"><i class="fa-solid fa-robot"></i> 早期惡化預警</span>
-                    <span class="ai-chip"><i class="fa-solid fa-bell"></i> 自動警示規則</span>
-                    <span class="ai-chip"><i class="fa-solid fa-chart-line"></i> 趨勢判讀輔助</span>
-                </div>
-                <p style="margin-top:10px;font-size:0.8rem;color:#888;">
-                    ※ 本區為 AI 模擬建議示意，實際臨床決策仍需由醫師與呼吸治療團隊綜合判斷。
-                </p>
             </div>
         </main>
     </div>
