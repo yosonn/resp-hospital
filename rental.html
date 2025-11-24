@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>共享設備租借管理 - RespMonitor</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo-area" onclick="window.location.href='index.html'">
+                <i class="fa-solid fa-heart-pulse"></i> 
+                <h2>RespMonitor</h2>
+            </div>
+            
+            <div class="nav-title">功能選單</div>
+            <ul class="sidebar-menu">
+                <li><a href="index.html"><i class="fa-solid fa-bed-pulse"></i> <span>病患監測列表</span></a></li>
+                <li><a href="rental.html" class="active"><i class="fa-solid fa-stopwatch"></i> <span>設備租借管理</span></a></li>
+                <li><a href="bi.html"><i class="fa-solid fa-chart-line"></i> <span>BI 決策分析</span></a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-bar">
+                <h1>Shared Device Rental Management</h1>
+                <div class="user-profile">
+                    <span>Dr. Yang (R.T.)</span>
+                    <i class="fa-solid fa-user-doctor"></i>
+                </div>
+            </header>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3>設備租借狀態一覽</h3>
+                    <button class="btn-outline"><i class="fa-solid fa-plus"></i> 新增租借</button>
+                </div>
+                
+                <div class="search-bar">
+                    <input type="text" id="rentalSearch" placeholder="搜尋病患姓名、設備編號或類型...">
+                    <button><i class="fa-solid fa-search"></i> 搜尋</button>
+                </div>
+
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>病患 / 病房</th>
+                            <th>設備資訊</th>
+                            <th>借用時間</th>
+                            <th>租期</th>
+                            <th>狀態</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="rentalTableBody">
+                        <!-- 資料由 script.js 動態生成 -->
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
