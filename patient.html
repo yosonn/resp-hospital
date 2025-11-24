@@ -182,3 +182,27 @@
             <div class="card ai-card">
                 <div class="card-header">
                     <h3>AI 建議與臨床提醒（模擬）</h3>
+                </div>
+                <p>
+                    根據目前病患的血氧、呼吸率與呼吸器設定，系統初步推估：
+                </p>
+                <ul style="margin-top:10px;padding-left:18px;font-size:0.9rem;color:#555;line-height:1.6;">
+                    <li>血氧 SpO₂ 長時間低於 90％，建議優先檢查呼吸器面罩密合度、氣道分泌物與體位是否影響換氣。</li>
+                    <li>呼吸率略快（RR 約 26 bpm），建議評估疼痛、焦慮或發燒等可能誘因，必要時調整鎮定與鎮痛策略。</li>
+                    <li>目前 EtCO₂ 與 PIP 數值穩定，短時間內無明顯換氣衰竭跡象，但建議持續監測肺功能變化。</li>
+                    <li>若 SpO₂ 再次跌至 88％以下且持續超過 5 分鐘，系統將自動升級警示等級並推播給值班醫師與呼吸治療師。</li>
+                </ul>
+                <div class="ai-chip-list">
+                    <span class="ai-chip"><i class="fa-solid fa-robot"></i> 早期惡化預警</span>
+                    <span class="ai-chip"><i class="fa-solid fa-bell"></i> 自動警示規則</span>
+                    <span class="ai-chip"><i class="fa-solid fa-chart-line"></i> 趨勢判讀輔助</span>
+                </div>
+                <p style="margin-top:10px;font-size:0.8rem;color:#888;">
+                    ※ 本區為 AI 模擬建議示意，實際臨床決策仍需由醫師與呼吸治療團隊綜合判斷。
+                </p>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
